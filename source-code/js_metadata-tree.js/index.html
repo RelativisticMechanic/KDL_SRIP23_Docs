@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../druid-query.php/">
+        <link rel="prev" href="../js_query-table-builder.js/">
       
       
-        <link rel="next" href="../upload-batch.php/">
+        <link rel="next" href="../js_ace1.5.0/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
-        <title>upload.php - SRIP004-KDL Work Documentation</title>
+        <title>js/metadata-tree.js - SRIP004-KDL Work Documentation</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#uploadphp" class="md-skip">
+        <a href="#jsmetadata-treejs" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              upload.php
+              js/metadata-tree.js
             
           </span>
         </div>
@@ -406,59 +406,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          upload.php
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../upload.php/" class="md-nav__link">
         upload.php
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#function" class="md-nav__link">
-    Function
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#working" class="md-nav__link">
-    Working
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -762,11 +714,59 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../js_metadata-tree.js/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          js/metadata-tree.js
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         js/metadata-tree.js
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    Function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#used-by" class="md-nav__link">
+    Used By
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -840,8 +840,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#working" class="md-nav__link">
-    Working
+  <a href="#used-by" class="md-nav__link">
+    Used By
   </a>
   
 </li>
@@ -861,14 +861,13 @@
                   
 
 
-<h1 id="uploadphp">UPLOAD.PHP</h1>
+<h1 id="jsmetadata-treejs">JS/METADATA-TREE.JS</h1>
 <h2 id="function">Function</h2>
-<p>This is the first part of the ingestion mechanism. After the files and metadata from the user is received from the <code>form-upload.php</code>, for a single file upload (CSV/XLSX) this file is invoked.</p>
-<h2 id="working">Working</h2>
-<p>The first thing that it does is validate the data, whether SDGs have been checked, name, year, and other details have been provided. </p>
-<p>Next, it creates something called "SDG Flags" (<code>sdg_flags</code>). As there are 17 Sustainable Development Goals, the most efficient way to store all SDGs is by creating a number where bits 1-17 will specify whether the relevant SDG applies to the data set or not. This "SDG Flag" is used by all utilities.</p>
-<p>Then it checks for the file size (50 MB limit imposed), and uses PHP's <code>move_uploaded_file()</code> to move it from the temporary POST storage to the <code>datasets/</code> directory. It also adds a UNIX timestamp in front of the filename to preserve its uniqueness. Next, it creates a file called <code>tmp.meta</code>, which contains all the metadata (SDG Flags, Year, Name, Description, etc.) that will be read by <code>metadata_writer.py</code>.</p>
-<p>Finally, it calls <code>upload_single_druid.py</code> with the given filename.</p>
+<p>Generates the JSON tree view.</p>
+<h2 id="used-by">Used By</h2>
+<ul>
+<li><code>metadata-viewer.php</code></li>
+</ul>
 
 
 
